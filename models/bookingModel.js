@@ -8,6 +8,6 @@ export const Booking = {
 
   findAll: (conditions, callback) => {
     const query = 'SELECT * FROM bookings WHERE userId = ?';
-    db.query(query, [conditions.userId], callback);
+    db.query(query, [conditions.id], callback);
   }
 };

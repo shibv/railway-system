@@ -14,7 +14,7 @@ export const addTrain = (req, res) => {
 
 export const getAvailableTrains = (req, res) => {
   const { source, destination } = req.query;
-
+  console.log(source, destination);
   Train.findAll({ source, destination }, (err, trains) => {
     if (err) {
       return res.status(500).json({ error: 'Error fetching trains' });
