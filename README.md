@@ -51,76 +51,36 @@ This project implements a railway management system like IRCTC, where users can 
    ```sql
    CREATE DATABASE railway_management;
 
+   CREATE TABLE users (
+   id INT NOT NULL AUTO_INCREMENT,
+   username VARCHAR(255) NOT NULL UNIQUE,
+   password VARCHAR(255) NOT NULL,
+   PRIMARY KEY (id)
+   );
+
+   CREATE TABLE trains (
+   id INT NOT NULL AUTO_INCREMENT,
+   source VARCHAR(255) NOT NULL,
+   destination VARCHAR(255) NOT NULL,
+   totalSeats INT NOT NULL,
+   availableSeats INT NOT NULL,
+   PRIMARY KEY (id)
+   );
+   CREATE TABLE bookings (
+   id INT NOT NULL AUTO_INCREMENT,
+   userId INT NOT NULL,
+   trainId INT NOT NULL,
+   PRIMARY KEY (id),
+   FOREIGN KEY (userId) REFERENCES users(id),
+   FOREIGN KEY (trainId) REFERENCES trains(id)
+   );
    ```
 
-## Create Tables in `railway_management`
+5) Run the project:
 
-To create the necessary tables for the application, run the following MySQL commands:
-
-### Users Table
-
-CREATE TABLE users (
-id INT NOT NULL AUTO_INCREMENT,
-username VARCHAR(255) NOT NULL UNIQUE,
-password VARCHAR(255) NOT NULL,
-PRIMARY KEY (id)
-);
-
-+----------+--------------+------+-----+---------+----------------+
-| Field | Type | Null | Key | Default | Extra |
-+----------+--------------+------+-----+---------+----------------+
-| id | int | NO | PRI | NULL | auto_increment |
-| username | varchar(255) | NO | UNI | NULL | |
-| password | varchar(255) | NO | | NULL | |
-+----------+--------------+------+-----+---------+----------------+
-
-### Trains Table
-
-CREATE TABLE trains (
-id INT NOT NULL AUTO_INCREMENT,
-source VARCHAR(255) NOT NULL,
-destination VARCHAR(255) NOT NULL,
-totalSeats INT NOT NULL,
-availableSeats INT NOT NULL,
-PRIMARY KEY (id)
-);
-
-+----------------+--------------+------+-----+---------+----------------+
-| Field | Type | Null | Key | Default | Extra |
-+----------------+--------------+------+-----+---------+----------------+
-| id | int | NO | PRI | NULL | auto_increment |
-| source | varchar(255) | NO | | NULL | |
-| destination | varchar(255) | NO | | NULL | |
-| totalSeats | int | NO | | NULL | |
-| availableSeats | int | NO | | NULL | |
-+----------------+--------------+------+-----+---------+----------------+
-
-### Bookings Table
-
-CREATE TABLE bookings (
-id INT NOT NULL AUTO_INCREMENT,
-userId INT NOT NULL,
-trainId INT NOT NULL,
-PRIMARY KEY (id),
-FOREIGN KEY (userId) REFERENCES users(id),
-FOREIGN KEY (trainId) REFERENCES trains(id)
-);
-
-+---------+------+------+-----+---------+----------------+
-| Field | Type | Null | Key | Default | Extra |
-+---------+------+------+-----+---------+----------------+
-| id | int | NO | PRI | NULL | auto_increment |
-| userId | int | NO | MUL | NULL | |
-| trainId | int | NO | MUL | NULL | |
-+---------+------+------+-----+---------+----------------+
-
-````
-
-
-5. Run the project:
 ```bash
 npm start
-````
+```
 
 ## Screenshots
 
