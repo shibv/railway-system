@@ -1,4 +1,30 @@
 
+# Railway Management System API
+
+This project implements a railway management system like IRCTC, where users can register, log in, check seat availability, and book train tickets. Admins can add new trains and manage train operations. The API also handles concurrency for seat bookings and ensures that race conditions are managed effectively.
+
+## Features
+
+- **User Registration**: Users can register an account.
+- **User Login**: Users can log in using their credentials to access the booking system.
+- **Train Management (Admin)**: Admins can add trains, manage train operations.
+- **Seat Availability**: Users can check for available trains between two stations and see the number of available seats.
+- **Seat Booking**: Users can book a seat on a train if seats are available.
+- **Concurrency Handling**: Manages race conditions by ensuring only one user can book the last available seat.
+- **Role-Based Access Control**: Admin routes are protected by API keys, and user actions are protected by JWT authentication.
+
+---
+
+## Tech Stack
+
+- **Backend**: Node.js, Express.js
+- **Database**: MySQL
+- **Authentication**: JWT (JSON Web Tokens)
+- **Concurrency Handling**: MySQL transactions with optimistic/pessimistic locking
+- **Environment**: dotenv for environment variable management
+
+---
+
 ## Setup Instructions
 
 1. Clone the repository.
@@ -28,58 +54,6 @@
    ```bash
    npm start
    ```
-# Railway Management System API
-
-This project implements a railway management system like IRCTC, where users can register, log in, check seat availability, and book train tickets. Admins can add new trains and manage train operations. The API also handles concurrency for seat bookings and ensures that race conditions are managed effectively.
-
-## Features
-
-- **User Registration**: Users can register an account.
-- **User Login**: Users can log in using their credentials to access the booking system.
-- **Train Management (Admin)**: Admins can add trains, manage train operations.
-- **Seat Availability**: Users can check for available trains between two stations and see the number of available seats.
-- **Seat Booking**: Users can book a seat on a train if seats are available.
-- **Concurrency Handling**: Manages race conditions by ensuring only one user can book the last available seat.
-- **Role-Based Access Control**: Admin routes are protected by API keys, and user actions are protected by JWT authentication.
-
----
-
-## Tech Stack
-
-- **Backend**: Node.js, Express.js
-- **Database**: MySQL
-- **Authentication**: JWT (JSON Web Tokens)
-- **Concurrency Handling**: MySQL transactions with optimistic/pessimistic locking
-- **Environment**: dotenv for environment variable management
-
----
-
-## Project Structure
-
----
-
-## Setup Instructions
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/railway-system.git
-cd railway-system
-```
-
-### 2. Install Dependencies
-
-```bash
-npm install
-
-```
-### 3. Run Application
-
-```bash
-npm start
-```
-
-## Test Screenshots 
 
 
 ## Screenshots
