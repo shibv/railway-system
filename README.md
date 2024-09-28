@@ -49,30 +49,38 @@ This project implements a railway management system like IRCTC, where users can 
 4. Create the `railway_management` database in MySQL:
 
    ```sql
+   -- Create the railway_management database
    CREATE DATABASE railway_management;
 
+   -- Switch to the newly created database
+   USE railway_management;
+
+   -- Create the users table
    CREATE TABLE users (
-   id INT NOT NULL AUTO_INCREMENT,
-   username VARCHAR(255) NOT NULL UNIQUE,
-   password VARCHAR(255) NOT NULL,
-   PRIMARY KEY (id)
+       id INT NOT NULL AUTO_INCREMENT,        -- Unique user ID
+       username VARCHAR(255) NOT NULL UNIQUE, -- Username, must be unique
+       password VARCHAR(255) NOT NULL,        -- Password for user authentication
+       PRIMARY KEY (id)                       -- Primary key on the id field
    );
 
+   -- Create the trains table
    CREATE TABLE trains (
-   id INT NOT NULL AUTO_INCREMENT,
-   source VARCHAR(255) NOT NULL,
-   destination VARCHAR(255) NOT NULL,
-   totalSeats INT NOT NULL,
-   availableSeats INT NOT NULL,
-   PRIMARY KEY (id)
+       id INT NOT NULL AUTO_INCREMENT,        -- Unique train ID
+       source VARCHAR(255) NOT NULL,          -- Source station for the train
+       destination VARCHAR(255) NOT NULL,     -- Destination station for the train
+       totalSeats INT NOT NULL,               -- Total seats available on the train
+       availableSeats INT NOT NULL,           -- Number of available seats remaining
+       PRIMARY KEY (id)                       -- Primary key on the id field
    );
+
+   -- Create the bookings table
    CREATE TABLE bookings (
-   id INT NOT NULL AUTO_INCREMENT,
-   userId INT NOT NULL,
-   trainId INT NOT NULL,
-   PRIMARY KEY (id),
-   FOREIGN KEY (userId) REFERENCES users(id),
-   FOREIGN KEY (trainId) REFERENCES trains(id)
+       id INT NOT NULL AUTO_INCREMENT,        -- Unique booking ID
+       userId INT NOT NULL,                   -- Foreign key linking to the user who made the booking
+       trainId INT NOT NULL,                  -- Foreign key linking to the train being booked
+       PRIMARY KEY (id),                      -- Primary key on the id field
+       FOREIGN KEY (userId) REFERENCES users(id),  -- Foreign key constraint to the users table
+       FOREIGN KEY (trainId) REFERENCES trains(id) -- Foreign key constraint to the trains table
    );
    ```
 
