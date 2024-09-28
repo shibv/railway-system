@@ -1,13 +1,18 @@
 import { db } from '../config/db.js';
 
 export const Booking = {
-  create: (bookingData, callback) => {
+  // Create a new booking record in the database
+  create: async (bookingData) => {
     const query = 'INSERT INTO bookings (userId, trainId) VALUES (?, ?)';
-    db.query(query, [bookingData.userId, bookingData.trainId], callback);
+    const [result] = await db.query(query, [bookingData.userId, bookingData.trainId]);
+    return result;
   },
 
-  findAll: (conditions, callback) => {
+  // Find all bookings for a particular user
+  findAll: async (conditions) => {
     const query = 'SELECT * FROM bookings WHERE userId = ?';
-    db.query(query, [conditions.id], callback);
+    console.log(query)
+    const [bookings] = await db.query(query, [conditions.id]);
+    return bookings;
   }
 };
