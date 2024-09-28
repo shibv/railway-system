@@ -4,7 +4,7 @@ export const addTrain = async (req, res) => {
   const { source, destination, totalSeats } = req.body;
 
   try {
-    // Create a new train entry in the database
+    
     await Train.create({ source, destination, totalSeats });
     res.status(201).json({ message: 'Train added successfully' });
   } catch (error) {
@@ -17,7 +17,7 @@ export const getAvailableTrains = async (req, res) => {
   const { source, destination } = req.query;
 
   try {
-    // Fetch trains based on source and destination
+    
     const trains = await Train.findAll({ source, destination });
     res.status(200).json(trains);
   } catch (error) {

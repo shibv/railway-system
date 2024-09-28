@@ -1,4 +1,4 @@
-import mysql from 'mysql2/promise'; // Use promise-based API for async/await
+import mysql from 'mysql2/promise'; 
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -10,11 +10,11 @@ const db = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     waitForConnections: true,
-    connectionLimit: 10, // Maximum number of connections in the pool
+    connectionLimit: 10, 
     queueLimit: 0 
 });
 
-// Optionally, connect and test the connection pool
+
 const connectDB = async () => {
     try {
         const connection = await db.getConnection(); // Test connection

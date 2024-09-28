@@ -3,10 +3,10 @@ import { bookingService } from '../services/bookingService.js';
 
 export const bookSeat = async (req, res) => {
   const { trainId } = req.body;
-  const userId = req.user.id; // Assuming user is authenticated and ID is available
+  const userId = req.user.id; 
 
   try {
-    // Use the bookingService to handle seat booking
+   
     const result = await bookingService.bookSeats(userId, trainId);
     res.status(200).json(result);
   } catch (error) {
@@ -19,7 +19,6 @@ export const getBookingDetails = async (req, res) => {
   const { id } = req.user; // User ID from authenticated user
 
   try {
-    // Fetch booking details for the user
     const bookings = await Booking.findAll({ id });
     res.status(200).json(bookings);
   } catch (error) {

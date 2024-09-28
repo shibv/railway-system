@@ -115,8 +115,3 @@ npm start
 ### Details of Booking by User
 
 [![booked-seats.png](https://i.postimg.cc/R0R5Qp0t/booked-seats.png)](https://postimg.cc/06bB9fD5)
-
-4. Create the `railway_management` database in MySQL:
-   ```sql
-   CREATE DATABASE railway_management;
-   ```
